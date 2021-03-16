@@ -6,7 +6,7 @@ export(bool)  var draw_caves  setget draw_caves
 
 export(int)   var map_w         = 80
 export(int)   var map_h         = 50
-
+var saved
 
 # this scene exists solely to run redraw on Caves.tscn
 # without the tilemap selected, so the grid isn't shown in
@@ -47,5 +47,24 @@ func _on_Button_Dung_pressed():
 	# Replace with function body.
 
 func _on_Button_Back_pressed():
-	get_tree().change_scene("res://Main_Menu/Main.tscn")
+	get_tree().change_scene("res://Main_Menu/Main_Main.tscn")
 	# Replace with function body.
+
+
+func _on_Button_Edit_pressed():
+	if $Dungeon.visible == true:
+		saved = $Dungeon
+	else:
+		saved = $Caves
+	
+	#var tiles = tilemap.get_used_cells()
+	#var file = File.new()
+	#file.open("res://Maps/save_game.dat", File.WRITE)
+	#file.store_string(var2str(tiles))
+	#file.close()
+	
+	#var node = get_node("/root/Main_Edit/Tilemap")
+	#get_tree().change_scene("res://Map_Edit/Main_Edit.tscn")
+	#get_tree().get_root().get_node("Main_Edit/Tilemap").set_cells(tilemap.get_used_cells())
+
+	pass # Replace with function body.
