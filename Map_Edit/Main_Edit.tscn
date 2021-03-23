@@ -1,10 +1,102 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://basics.tres" type="TileSet" id=1]
+[ext_resource path="res://Map_Edit/Terrain.gd" type="Script" id=2]
+[ext_resource path="res://Map_Gen/Camera_Mov.gd" type="Script" id=3]
+[ext_resource path="res://Map_Edit/Main_Edit.gd" type="Script" id=4]
+[ext_resource path="res://Map_Edit/SelectionRectangle.gd" type="Script" id=5]
 
 [node name="Main_Edit" type="Node2D"]
+script = ExtResource( 4 )
 
-[node name="TileMap" type="TileMap" parent="."]
+[node name="Terrain" type="TileMap" parent="."]
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 32, 32 )
 format = 1
+script = ExtResource( 2 )
+
+[node name="SelectionRectangle" type="Node2D" parent="."]
+script = ExtResource( 5 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 511.315, 300.186 )
+current = true
+script = ExtResource( 3 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
+
+[node name="TabContainer" type="TabContainer" parent="Camera2D/CanvasLayer"]
+anchor_right = 0.011
+anchor_bottom = 0.011
+margin_left = 24.0
+margin_top = 24.0
+margin_right = 291.736
+margin_bottom = 121.4
+tab_align = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Terrain" type="VBoxContainer" parent="Camera2D/CanvasLayer/TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="ButtonGround" type="Button" parent="Camera2D/CanvasLayer/TabContainer/Terrain"]
+margin_right = 271.0
+margin_bottom = 20.0
+text = "Ground"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonRoof" type="Button" parent="Camera2D/CanvasLayer/TabContainer/Terrain"]
+margin_top = 24.0
+margin_right = 271.0
+margin_bottom = 44.0
+text = "Roof"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonWater" type="Button" parent="Camera2D/CanvasLayer/TabContainer/Terrain"]
+margin_top = 48.0
+margin_right = 271.0
+margin_bottom = 68.0
+text = "Water"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Objects" type="VBoxContainer" parent="Camera2D/CanvasLayer/TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="Players" type="VBoxContainer" parent="Camera2D/CanvasLayer/TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -130.0
+margin_bottom = -80.0
+
+[node name="Monsters" type="VBoxContainer" parent="Camera2D/CanvasLayer/TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -130.0
+margin_bottom = -80.0
+[connection signal="pressed" from="Camera2D/CanvasLayer/TabContainer/Terrain/ButtonGround" to="." method="_on_ButtonGround_pressed"]
+[connection signal="pressed" from="Camera2D/CanvasLayer/TabContainer/Terrain/ButtonRoof" to="." method="_on_ButtonRoof_pressed"]
+[connection signal="pressed" from="Camera2D/CanvasLayer/TabContainer/Terrain/ButtonWater" to="." method="_on_ButtonWater_pressed"]
