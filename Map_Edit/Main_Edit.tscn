@@ -28,16 +28,16 @@ script = ExtResource( 3 )
 [node name="TabContainer" type="TabContainer" parent="Camera2D/CanvasLayer"]
 anchor_right = 0.011
 anchor_bottom = 0.011
-margin_left = 24.0
-margin_top = 24.0
-margin_right = 291.736
-margin_bottom = 121.4
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 363.736
+margin_bottom = 72.4
 tab_align = 0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Terrain" type="VBoxContainer" parent="Camera2D/CanvasLayer/TabContainer"]
+[node name="Terrain" type="HBoxContainer" parent="Camera2D/CanvasLayer/TabContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -46,32 +46,32 @@ margin_right = -4.0
 margin_bottom = -4.0
 
 [node name="ButtonGround" type="Button" parent="Camera2D/CanvasLayer/TabContainer/Terrain"]
-margin_right = 271.0
-margin_bottom = 20.0
+margin_right = 59.0
+margin_bottom = 27.0
 text = "Ground"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ButtonRoof" type="Button" parent="Camera2D/CanvasLayer/TabContainer/Terrain"]
-margin_top = 24.0
-margin_right = 271.0
-margin_bottom = 44.0
+margin_left = 63.0
+margin_right = 103.0
+margin_bottom = 27.0
 text = "Roof"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ButtonWater" type="Button" parent="Camera2D/CanvasLayer/TabContainer/Terrain"]
-margin_top = 48.0
-margin_right = 271.0
-margin_bottom = 68.0
+margin_left = 107.0
+margin_right = 157.0
+margin_bottom = 27.0
 text = "Water"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Objects" type="VBoxContainer" parent="Camera2D/CanvasLayer/TabContainer"]
+[node name="Objects" type="HBoxContainer" parent="Camera2D/CanvasLayer/TabContainer"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -80,23 +80,29 @@ margin_top = 32.0
 margin_right = -4.0
 margin_bottom = -4.0
 
-[node name="Players" type="VBoxContainer" parent="Camera2D/CanvasLayer/TabContainer"]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 32.0
-margin_right = -130.0
-margin_bottom = -80.0
+[node name="ButtonChest" type="Button" parent="Camera2D/CanvasLayer/TabContainer/Objects"]
+margin_right = 48.0
+margin_bottom = 564.0
+text = "Chest"
 
-[node name="Monsters" type="VBoxContainer" parent="Camera2D/CanvasLayer/TabContainer"]
+[node name="Players" type="HBoxContainer" parent="Camera2D/CanvasLayer/TabContainer"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
 margin_top = 32.0
-margin_right = -130.0
-margin_bottom = -80.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="Monsters" type="HBoxContainer" parent="Camera2D/CanvasLayer/TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
 [connection signal="pressed" from="Camera2D/CanvasLayer/TabContainer/Terrain/ButtonGround" to="." method="_on_ButtonGround_pressed"]
 [connection signal="pressed" from="Camera2D/CanvasLayer/TabContainer/Terrain/ButtonRoof" to="." method="_on_ButtonRoof_pressed"]
 [connection signal="pressed" from="Camera2D/CanvasLayer/TabContainer/Terrain/ButtonWater" to="." method="_on_ButtonWater_pressed"]
+[connection signal="pressed" from="Camera2D/CanvasLayer/TabContainer/Objects/ButtonChest" to="." method="_on_ButtonChest_pressed"]

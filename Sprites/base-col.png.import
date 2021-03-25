@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/monsters.png-5e2b943a391cd53f5a03de996b3f444d.stex"
+path="res://.import/base-col.png-330d7fd62348d0840777215310f68ceb.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Characters/monsters.png"
-dest_files=[ "res://.import/monsters.png-5e2b943a391cd53f5a03de996b3f444d.stex" ]
+source_file="res://Sprites/base-col.png"
+dest_files=[ "res://.import/base-col.png-330d7fd62348d0840777215310f68ceb.stex" ]
 
 [params]
 

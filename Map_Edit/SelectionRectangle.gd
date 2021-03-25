@@ -13,7 +13,7 @@ func _unhandled_input(event):
 		if event.button_index == BUTTON_LEFT:
 			color = Color(1,1,1, 0.6)
 		elif event.button_index == BUTTON_RIGHT:
-			color = Color(0.86, 0.08, 0.24, 0.5)
+			color = Color(0.86, 0.08, 0.24, 0.6)
 		if event.pressed:
 			dragging = true
 			drag_start = get_global_mouse_position()

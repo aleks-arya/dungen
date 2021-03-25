@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/heros_white.png-8a8782590cfe4f7a7045576a354ba896.stex"
+path="res://.import/heros_white.png-87cb0ddd68b8c9e89b34ab7574d1c5a5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Characters/heros_white.png"
-dest_files=[ "res://.import/heros_white.png-8a8782590cfe4f7a7045576a354ba896.stex" ]
+source_file="res://Objects/heros_white.png"
+dest_files=[ "res://.import/heros_white.png-87cb0ddd68b8c9e89b34ab7574d1c5a5.stex" ]
 
 [params]
 

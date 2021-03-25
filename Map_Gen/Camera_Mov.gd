@@ -1,21 +1,21 @@
 extends Camera2D
 
 export var panSpeed = 20.0
-export var mapW = 80
-export var mapH = 50
+var mapW = 50
+var mapH = 50
 
 export var speed = 20.0
 export var zoomspeed = 20.0
 export var zoommargin = 0.1
 
 export var zoomMin = 0.25
-export var zoomMax = 6.0
+export var zoomMax = 8.0
 export var marginX = 200.0
 export var marginY = 200.0
 
 var mousepos = Vector2()
 var mouseposGlobal = Vector2()
-var zoomfactor = 1.0
+var zoomfactor = 1.25
 var zooming = false
 
 func _init():
@@ -70,3 +70,8 @@ func _input(event):
 	if event is InputEventMouse:
 		mousepos = event.position
 		mouseposGlobal = get_global_mouse_position()
+
+
+func recentre():
+	position.x = mapW/2 * 32
+	position.y = mapH/2 * 32
