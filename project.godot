@@ -8,16 +8,24 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Resource",
+"class": "Grid",
+"language": "GDScript",
+"path": "res://Grid.gd"
+} ]
 _global_script_class_icons={
-
+"Grid": ""
 }
 
 [application]
 
-config/name="Procgen CA"
+config/name="Procgen & VTT"
 run/main_scene="res://Main_Menu/Main_Main.tscn"
-config/icon="res://icon.png"
+boot_splash/image="res://darkest-godot.png"
+boot_splash/fullsize=false
+boot_splash/use_filter=false
+config/icon="res://darkest-godot.png"
 
 [autoload]
 

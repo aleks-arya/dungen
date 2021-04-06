@@ -1,23 +1,25 @@
 extends TileMap
 
 enum Tiles { GROUND, ROOF, TREE, WATER}
-export(int)   var map_w           = 80
-export(int)   var map_h           = 50
+export(int)   var map_w           = 66
+export(int)   var map_h           = 66
 
-const load_dir = "user://temporary_map.txt"
+const edit_load_dir = "user://temporary_map.txt"
 
 func _ready():
-	load_map()
+	
+	if(get_parent().name == "Main_Edit"):
+		load_gen_map()
 	pass
 	
 func _process(delta):
 	
 	pass
 	
-func load_map():
+func load_gen_map():
 	var file = File.new()
-	if file.file_exists(load_dir):
-		file.open(load_dir, File.READ)
+	if file.file_exists(edit_load_dir):
+		file.open(edit_load_dir, File.READ)
 		map_w = str2var(file.get_line())
 		map_h = str2var(file.get_line())
 

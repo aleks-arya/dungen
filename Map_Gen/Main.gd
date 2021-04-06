@@ -4,8 +4,8 @@ extends Node2D
 export(bool) var draw_dung setget draw_dung
 export(bool)  var draw_caves  setget draw_caves
 
-export(int)   var map_w         = 50
-export(int)   var map_h         = 50
+export(int)   var map_w         = 66
+export(int)   var map_h         = 66
 var room_size     = 2
 var density       = 2
 
@@ -28,7 +28,7 @@ func draw_caves(value = null):
 func update_dung_variables():
 	$Dungeon.map_w = map_w
 	$Dungeon.map_h = map_h
-	$Dungeon.min_room_size = 4 + 2*room_size
+	$Dungeon.min_room_size = 6 + room_size
 	$Dungeon.min_room_factor = 0.25 + 0.05*density
 
 
@@ -94,13 +94,13 @@ func return_small_big(value):
 
 
 func _on_HSlider_Width_value_changed(value):
-	map_w = 50 + int(value*20)
+	map_w = 42 + int(value*12)
 	$Camera2D/CanvasLayer/Modifiers/Label_Width.text = "Width: "+return_small_big(value)
 	pass # Replace with function body.
 
 func _on_HSlider_Height_value_changed(value):
-	map_h = 50 + int(value*20)
-	$Camera2D/CanvasLayer/Modifiers/Label_Height.text = "Width: "+return_small_big(value)
+	map_h = 42 + int(value*12)
+	$Camera2D/CanvasLayer/Modifiers/Label_Height.text = "Height: "+return_small_big(value)
 	pass # Replace with function body.
 
 func _on_HSlider_RoomSize_value_changed(value):
