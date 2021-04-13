@@ -30,6 +30,7 @@ config/icon="res://darkest-godot.png"
 [autoload]
 
 Util="*res://Map_Gen/Util.gd"
+Global="*res://global.gd"
 
 [display]
 

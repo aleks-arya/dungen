@@ -48,6 +48,7 @@ margin_bottom = -4.0
 [node name="ButtonGround" type="Button" parent="Camera2D/CanvasLayer/TabContainer/Terrain"]
 margin_right = 59.0
 margin_bottom = 27.0
+focus_mode = 1
 text = "Ground"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -57,6 +58,7 @@ __meta__ = {
 margin_left = 63.0
 margin_right = 103.0
 margin_bottom = 27.0
+focus_mode = 1
 text = "Roof"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -66,6 +68,7 @@ __meta__ = {
 margin_left = 107.0
 margin_right = 157.0
 margin_bottom = 27.0
+focus_mode = 1
 text = "Water"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -82,7 +85,8 @@ margin_bottom = -4.0
 
 [node name="ButtonChest" type="Button" parent="Camera2D/CanvasLayer/TabContainer/Objects"]
 margin_right = 48.0
-margin_bottom = 564.0
+margin_bottom = 27.0
+focus_mode = 1
 text = "Chest"
 
 [node name="Players" type="HBoxContainer" parent="Camera2D/CanvasLayer/TabContainer"]
@@ -102,7 +106,99 @@ margin_left = 4.0
 margin_top = 32.0
 margin_right = -4.0
 margin_bottom = -4.0
+
+[node name="ButtonBlob" type="Button" parent="Camera2D/CanvasLayer/TabContainer/Monsters"]
+margin_right = 41.0
+margin_bottom = 27.0
+focus_mode = 1
+text = "Blob"
+
+[node name="ButtonRat" type="Button" parent="Camera2D/CanvasLayer/TabContainer/Monsters"]
+margin_left = 45.0
+margin_right = 77.0
+margin_bottom = 27.0
+focus_mode = 1
+text = "Rat"
+
+[node name="ButtonBat" type="Button" parent="Camera2D/CanvasLayer/TabContainer/Monsters"]
+margin_left = 81.0
+margin_right = 114.0
+margin_bottom = 27.0
+focus_mode = 1
+text = "Bat"
+
+[node name="ButtonSpider" type="Button" parent="Camera2D/CanvasLayer/TabContainer/Monsters"]
+margin_left = 118.0
+margin_right = 170.0
+margin_bottom = 27.0
+focus_mode = 1
+text = "Spider"
+
+[node name="ButtonSkeleW" type="Button" parent="Camera2D/CanvasLayer/TabContainer/Monsters"]
+margin_left = 174.0
+margin_right = 292.0
+margin_bottom = 27.0
+focus_mode = 1
+text = "Skeleton Warrior"
+
+[node name="ButtonSkeleA" type="Button" parent="Camera2D/CanvasLayer/TabContainer/Monsters"]
+margin_left = 296.0
+margin_right = 409.0
+margin_bottom = 27.0
+focus_mode = 1
+text = "Skeleton Archer"
+
+[node name="ButtonSave" type="Button" parent="Camera2D/CanvasLayer"]
+margin_left = 927.0
+margin_top = 529.0
+margin_right = 975.0
+margin_bottom = 553.0
+text = "SAVE"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonMain" type="Button" parent="Camera2D/CanvasLayer"]
+margin_left = 927.0
+margin_top = 562.0
+margin_right = 975.0
+margin_bottom = 586.0
+text = "BACK"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LineEditSave" type="LineEdit" parent="Camera2D/CanvasLayer"]
+margin_left = 759.0
+margin_top = 529.0
+margin_right = 919.0
+margin_bottom = 553.0
+focus_mode = 1
+text = "saved_map"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelSave" type="Label" parent="Camera2D/CanvasLayer"]
+visible = false
+margin_left = 791.0
+margin_top = 513.0
+margin_right = 887.0
+margin_bottom = 527.0
+custom_colors/font_color = Color( 0.705882, 0, 0, 1 )
+text = "Already Exists!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="Camera2D/CanvasLayer/TabContainer/Terrain/ButtonGround" to="." method="_on_ButtonGround_pressed"]
 [connection signal="pressed" from="Camera2D/CanvasLayer/TabContainer/Terrain/ButtonRoof" to="." method="_on_ButtonRoof_pressed"]
 [connection signal="pressed" from="Camera2D/CanvasLayer/TabContainer/Terrain/ButtonWater" to="." method="_on_ButtonWater_pressed"]
 [connection signal="pressed" from="Camera2D/CanvasLayer/TabContainer/Objects/ButtonChest" to="." method="_on_ButtonChest_pressed"]
+[connection signal="pressed" from="Camera2D/CanvasLayer/TabContainer/Monsters/ButtonBlob" to="." method="_on_ButtonBlob_pressed"]
+[connection signal="pressed" from="Camera2D/CanvasLayer/TabContainer/Monsters/ButtonRat" to="." method="_on_ButtonRat_pressed"]
+[connection signal="pressed" from="Camera2D/CanvasLayer/TabContainer/Monsters/ButtonBat" to="." method="_on_ButtonBat_pressed"]
+[connection signal="pressed" from="Camera2D/CanvasLayer/TabContainer/Monsters/ButtonSpider" to="." method="_on_ButtonSpider_pressed"]
+[connection signal="pressed" from="Camera2D/CanvasLayer/TabContainer/Monsters/ButtonSkeleW" to="." method="_on_ButtonSkeleW_pressed"]
+[connection signal="pressed" from="Camera2D/CanvasLayer/TabContainer/Monsters/ButtonSkeleA" to="." method="_on_ButtonSkeleA_pressed"]
+[connection signal="pressed" from="Camera2D/CanvasLayer/ButtonSave" to="." method="_on_ButtonSave_pressed"]
+[connection signal="pressed" from="Camera2D/CanvasLayer/ButtonMain" to="." method="_on_ButtonMain_pressed"]

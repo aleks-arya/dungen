@@ -5,28 +5,42 @@ enum Tiles { GROUND, ROOF, TREE, WATER}
 var active_left = Tiles.GROUND
 var active_right = Tiles.ROOF
 var active = active_left
+var color = Color(0.85, 0.65, 0.13, 1)
 
 var dragging = false
 var drag_start = Vector2.ZERO
 
 var tiling = true
 
+func _ready():
+	if Global.editing == "":
+		$Terrain.load_gen_map()
+	else:
+		var map = load("res://Map_Menu/Maps/"+Global.editing+".tscn").instance()
+		remove_child($Terrain)
+		add_child(map)
+		map.name = "Terrain"
+		$Camera2D/CanvasLayer/LineEditSave.text = Global.editing
+
+
 func _unhandled_input(event):
 	if tiling:
 		#terrain
 		if event is InputEventMouseButton and (event.button_index == BUTTON_LEFT or event.button_index == BUTTON_RIGHT):
-			if event.button_index == BUTTON_LEFT:
-				active = active_left
-			elif event.button_index == BUTTON_RIGHT:
-				active = active_right
-			if event.pressed:
-				dragging = true
-				drag_start = get_node("./Terrain").world_to_map(get_global_mouse_position())
-			elif dragging:
-				var drag_end = get_node("./Terrain").world_to_map(get_global_mouse_position())
-				fill_rect($Terrain, drag_start, drag_end, active)
-				dragging = false
-				update()
+			var cords = get_node("./Terrain").world_to_map(get_global_mouse_position())
+			if get_node("./Terrain").get_cell(cords.x, cords.y) != -1:
+				if event.button_index == BUTTON_LEFT:
+					active = active_left
+				elif event.button_index == BUTTON_RIGHT:
+					active = active_right
+				if event.pressed:
+					dragging = true
+					drag_start = get_node("./Terrain").world_to_map(get_global_mouse_position())
+				elif dragging:
+					var drag_end = get_node("./Terrain").world_to_map(get_global_mouse_position())
+					fill_rect($Terrain, drag_start, drag_end, active)
+					dragging = false
+					update()
 		if event is InputEventMouseMotion and dragging:
 			update()
 	else:
@@ -41,7 +55,9 @@ func _unhandled_input(event):
 					var object = load("res://Objects/"+active_left+".tscn").instance()
 					object.set_name(active_left+"-"+str(cords.x)+"-"+str(cords.y))
 					$Terrain.add_child(object)
+					object.set_owner($Terrain)
 					print(object.name)
+					object.sprite.set_modulate(Color(randf(),randf(),randf()))
 					object.position.x = $Terrain.map_to_world(cords).x + 16
 					object.position.y = $Terrain.map_to_world(cords).y + 16
 					object.x = cords.x
@@ -107,4 +123,76 @@ func _on_ButtonWater_pressed():
 func _on_ButtonChest_pressed():
 	tiling = false
 	active_left = "Chest"
+	color = Color(0.85, 0.65, 0.13, 1)
+	pass # Replace with function body.
+
+
+func _on_ButtonBlob_pressed():
+	tiling = false
+	active_left = "Blob"
+	color = Color(0, randf(), 0)
+	pass # Replace with function body.
+
+
+func _on_ButtonRat_pressed():
+	tiling = false
+	active_left = "Rat"
+	var x = randf()
+	color = Color(x,x,x)
+	pass # Replace with function body.
+
+
+func _on_ButtonSkeleW_pressed():
+	tiling = false
+	active_left = "Skeleton_Warrior"
+	color = Color( 0.97, 0.97, 1, 1 )
+	pass # Replace with function body.
+
+
+func _on_ButtonSkeleA_pressed():
+	tiling = false
+	active_left = "Skeleton_Archer"
+	color = Color( 0.97, 0.97, 1, 1 )
+	pass # Replace with function body.
+
+
+func _on_ButtonBat_pressed():
+	tiling = false
+	active_left = "Bat"
+	var x = rand_range(0,0.2)
+	color = Color(x,x,x)
+	pass # Replace with function body.
+
+
+func _on_ButtonSpider_pressed():
+	tiling = false
+	active_left = "Spider"
+	color = Color(0,0,0)
+	pass # Replace with function body.
+
+
+func _on_ButtonSave_pressed():
+	var map_name = $Camera2D/CanvasLayer/LineEditSave.get_text()+".tscn"
+	var file = File.new()
+	if file.file_exists("res://Map_Menu/Maps/"+map_name):
+		if Global.editing == $Camera2D/CanvasLayer/LineEditSave.text:
+			$Camera2D/CanvasLayer/LabelSave.visible = false
+			var packed_scene = PackedScene.new()
+			packed_scene.pack(get_tree().get_root().get_node("/root/Main_Edit/Terrain"))
+			ResourceSaver.save("res://Map_Menu/Maps/"+map_name, packed_scene)
+		else:
+			$Camera2D/CanvasLayer/LabelSave.visible = true
+	else:
+		$Camera2D/CanvasLayer/LabelSave.visible = false
+		var packed_scene = PackedScene.new()
+		packed_scene.pack(get_tree().get_root().get_node("/root/Main_Edit/Terrain"))
+		ResourceSaver.save("res://Map_Menu/Maps/"+map_name, packed_scene)
+	pass # Replace with function body.
+
+
+func _on_ButtonMain_pressed():
+	if Global.editing == "":
+		get_tree().change_scene("res://Map_Gen/Main_Gen.tscn")
+	else:
+		get_tree().change_scene("res://Map_Menu/Maps.tscn")
 	pass # Replace with function body.

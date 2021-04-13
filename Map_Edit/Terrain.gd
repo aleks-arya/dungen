@@ -6,14 +6,7 @@ export(int)   var map_h           = 66
 
 const edit_load_dir = "user://temporary_map.txt"
 
-func _ready():
-	
-	if(get_parent().name == "Main_Edit"):
-		load_gen_map()
-	pass
-	
 func _process(delta):
-	
 	pass
 	
 func load_gen_map():
