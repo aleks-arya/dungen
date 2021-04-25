@@ -58,10 +58,8 @@ func _unhandled_input(event):
 					object.set_owner($Terrain)
 					print(object.name)
 					object.sprite.set_modulate(Color(randf(),randf(),randf()))
-					object.position.x = $Terrain.map_to_world(cords).x + 16
-					object.position.y = $Terrain.map_to_world(cords).y + 16
-					object.x = cords.x
-					object.y = cords.y
+					object.position = $Terrain.map_to_world(cords) + Vector2(16,16)
+					object.cell = cords
 					
 		if event is InputEventMouseButton and event.button_index == BUTTON_RIGHT:
 			#removing objects (right click)
@@ -126,7 +124,14 @@ func _on_ButtonChest_pressed():
 	color = Color(0.85, 0.65, 0.13, 1)
 	pass # Replace with function body.
 
+#----------------------------------players
+func _on_ButtonPlayerMage_pressed():
+	tiling = false
+	active_left = "Player"
+	pass # Replace with function body.
 
+
+#----------------------------------monsters
 func _on_ButtonBlob_pressed():
 	tiling = false
 	active_left = "Blob"
@@ -196,3 +201,6 @@ func _on_ButtonMain_pressed():
 	else:
 		get_tree().change_scene("res://Map_Menu/Maps.tscn")
 	pass # Replace with function body.
+
+
+

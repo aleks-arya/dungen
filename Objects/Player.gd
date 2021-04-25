@@ -3,6 +3,7 @@ extends Node2D
 var cell
 export var hitpoints = 10
 export var move_range = 4
+export var view_range = 7
 var temp_move = move_range
 
 var hit = false

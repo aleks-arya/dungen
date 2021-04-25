@@ -1,8 +1,8 @@
 extends Camera2D
 
 export var panSpeed = 20.0
-var mapW = 66
-var mapH = 66
+var mapW = Global.map_w
+var mapH = Global.map_h
 
 export var speed = 20.0
 export var zoomspeed = 20.0

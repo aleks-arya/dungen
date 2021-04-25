@@ -98,6 +98,11 @@ margin_top = 32.0
 margin_right = -4.0
 margin_bottom = -4.0
 
+[node name="ButtonPlayerMage" type="Button" parent="Camera2D/CanvasLayer/TabContainer/Players"]
+margin_right = 12.0
+margin_bottom = 20.0
+text = "Player"
+
 [node name="Monsters" type="HBoxContainer" parent="Camera2D/CanvasLayer/TabContainer"]
 visible = false
 anchor_right = 1.0
@@ -149,30 +154,30 @@ focus_mode = 1
 text = "Skeleton Archer"
 
 [node name="ButtonSave" type="Button" parent="Camera2D/CanvasLayer"]
-margin_left = 927.0
-margin_top = 529.0
-margin_right = 975.0
-margin_bottom = 553.0
+margin_left = 864.0
+margin_top = 560.0
+margin_right = 928.0
+margin_bottom = 584.0
 text = "SAVE"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ButtonMain" type="Button" parent="Camera2D/CanvasLayer"]
-margin_left = 927.0
-margin_top = 562.0
-margin_right = 975.0
-margin_bottom = 586.0
+margin_left = 944.0
+margin_top = 560.0
+margin_right = 1008.0
+margin_bottom = 584.0
 text = "BACK"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="LineEditSave" type="LineEdit" parent="Camera2D/CanvasLayer"]
-margin_left = 759.0
-margin_top = 529.0
-margin_right = 919.0
-margin_bottom = 553.0
+margin_left = 688.0
+margin_top = 560.0
+margin_right = 848.0
+margin_bottom = 584.0
 focus_mode = 1
 text = "saved_map"
 __meta__ = {
@@ -194,6 +199,7 @@ __meta__ = {
 [connection signal="pressed" from="Camera2D/CanvasLayer/TabContainer/Terrain/ButtonRoof" to="." method="_on_ButtonRoof_pressed"]
 [connection signal="pressed" from="Camera2D/CanvasLayer/TabContainer/Terrain/ButtonWater" to="." method="_on_ButtonWater_pressed"]
 [connection signal="pressed" from="Camera2D/CanvasLayer/TabContainer/Objects/ButtonChest" to="." method="_on_ButtonChest_pressed"]
+[connection signal="pressed" from="Camera2D/CanvasLayer/TabContainer/Players/ButtonPlayerMage" to="." method="_on_ButtonPlayerMage_pressed"]
 [connection signal="pressed" from="Camera2D/CanvasLayer/TabContainer/Monsters/ButtonBlob" to="." method="_on_ButtonBlob_pressed"]
 [connection signal="pressed" from="Camera2D/CanvasLayer/TabContainer/Monsters/ButtonRat" to="." method="_on_ButtonRat_pressed"]
 [connection signal="pressed" from="Camera2D/CanvasLayer/TabContainer/Monsters/ButtonBat" to="." method="_on_ButtonBat_pressed"]

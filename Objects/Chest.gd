@@ -1,7 +1,6 @@
 extends Node2D
 
-var x
-var y
+var cell
 var hit = false
 
 var opened = false
@@ -17,13 +16,3 @@ func open():
 	
 
 
-
-
-func _on_Area2D_mouse_entered():
-	hit = true
-	pass # Replace with function body.
-
-
-func _on_Area2D_mouse_exited():
-	hit = false
-	pass # Replace with function body.

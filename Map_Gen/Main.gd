@@ -95,11 +95,13 @@ func return_small_big(value):
 
 func _on_HSlider_Width_value_changed(value):
 	map_w = 42 + int(value*12)
+	Global.map_w = map_w
 	$Camera2D/CanvasLayer/Modifiers/Label_Width.text = "Width: "+return_small_big(value)
 	pass # Replace with function body.
 
 func _on_HSlider_Height_value_changed(value):
 	map_h = 42 + int(value*12)
+	Global.map_h = map_h
 	$Camera2D/CanvasLayer/Modifiers/Label_Height.text = "Height: "+return_small_big(value)
 	pass # Replace with function body.
 
