@@ -35,6 +35,8 @@ func generate():
 	create_rooms()   # Create rooms in the leaf leaves of the tree
 	join_rooms()     # Ensure all rooms connected
 	clear_deadends() # Remove deadend corridors
+	update_bitmask_region()
+
 
 
 # start by filling the map with roof tiles
@@ -99,7 +101,7 @@ func create_leaf(parent_id):
 			leaf2 = { x = x, y = y+h1, w = w, h = h2, split = 'h' }
 			can_split = true
 
-	# rooms fit, lets split
+	# rooms fit, splitting
 	if (can_split):
 		leaf1.parent_id    = parent_id
 		tree[leaf_id]      = leaf1

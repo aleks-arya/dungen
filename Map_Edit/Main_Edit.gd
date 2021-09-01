@@ -15,11 +15,13 @@ var tiling = true
 func _ready():
 	if Global.editing == "":
 		$Terrain.load_gen_map()
+		$Terrain.update_bitmask_region()
 	else:
-		var map = load("res://Map_Menu/Maps/"+Global.editing+".tscn").instance()
+		var map = load("user://saves/"+Global.editing+".scn").instance()
 		remove_child($Terrain)
 		add_child(map)
 		map.name = "Terrain"
+		map.update_bitmask_region()
 		$Camera2D/CanvasLayer/LineEditSave.text = Global.editing
 
 
@@ -41,8 +43,10 @@ func _unhandled_input(event):
 					fill_rect($Terrain, drag_start, drag_end, active)
 					dragging = false
 					update()
+					$Terrain.update_bitmask_region()
 		if event is InputEventMouseMotion and dragging:
 			update()
+			$Terrain.update_bitmask_region()
 	else:
 		#objects
 		if event is InputEventMouseButton and event.button_index == BUTTON_LEFT:
@@ -57,7 +61,7 @@ func _unhandled_input(event):
 					$Terrain.add_child(object)
 					object.set_owner($Terrain)
 					print(object.name)
-					object.sprite.set_modulate(Color(randf(),randf(),randf()))
+					#object.sprite.set_modulate(Color(randf(),randf(),randf()))
 					object.position = $Terrain.map_to_world(cords) + Vector2(16,16)
 					object.cell = cords
 					
@@ -177,21 +181,23 @@ func _on_ButtonSpider_pressed():
 
 
 func _on_ButtonSave_pressed():
-	var map_name = $Camera2D/CanvasLayer/LineEditSave.get_text()+".tscn"
+	var map_name = $Camera2D/CanvasLayer/LineEditSave.get_text()+".scn"
 	var file = File.new()
-	if file.file_exists("res://Map_Menu/Maps/"+map_name):
+	if file.file_exists("user://saves/"+map_name):
 		if Global.editing == $Camera2D/CanvasLayer/LineEditSave.text:
+			print("nadpisuje")
 			$Camera2D/CanvasLayer/LabelSave.visible = false
 			var packed_scene = PackedScene.new()
 			packed_scene.pack(get_tree().get_root().get_node("/root/Main_Edit/Terrain"))
-			ResourceSaver.save("res://Map_Menu/Maps/"+map_name, packed_scene)
+			ResourceSaver.save("user://saves/"+map_name, packed_scene)
 		else:
 			$Camera2D/CanvasLayer/LabelSave.visible = true
 	else:
+		print("zapisuje")
 		$Camera2D/CanvasLayer/LabelSave.visible = false
 		var packed_scene = PackedScene.new()
 		packed_scene.pack(get_tree().get_root().get_node("/root/Main_Edit/Terrain"))
-		ResourceSaver.save("res://Map_Menu/Maps/"+map_name, packed_scene)
+		ResourceSaver.save("user://saves/"+map_name, packed_scene)
 	pass # Replace with function body.
 
 

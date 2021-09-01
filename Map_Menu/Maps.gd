@@ -1,6 +1,8 @@
 extends Node2D
 
 func _ready():
+	var edit_icon = preload("res://Sprites/edit2.png")
+	var delet_icon = preload("res://Sprites/thrash2.png")
 	var files = list_files()
 	for x in files:
 		var size = Vector2(100,50)
@@ -13,10 +15,12 @@ func _ready():
 		var buttonEdit = Button.new()
 		buttonEdit.set_name("Edit_"+x)
 		buttonEdit.rect_min_size = size
+		buttonEdit.icon = edit_icon
 		
 		var buttonDelete = Button.new()
 		buttonDelete.set_name("Delete_"+x)
 		buttonDelete.rect_min_size = size
+		buttonDelete.icon = delet_icon
 		
 		$ScrollContainer/HBoxContainer/LoadContainer.add_child(buttonLoad)
 		$ScrollContainer/HBoxContainer/EditContainer.add_child(buttonEdit)
@@ -33,7 +37,7 @@ func _input(event):
 func list_files():
 	var files = []
 	var dir = Directory.new()
-	dir.open("res://Map_Menu/Maps/")
+	dir.open("user://saves/")
 	dir.list_dir_begin()
 	
 	while true:
@@ -78,9 +82,9 @@ func _on_ButtonEdit_pressed(name):
 	
 func _on_ButtonDelete_pressed(name):
 	var file = File.new()
-	if file.file_exists("res://Map_Menu/Maps/"+name+".tscn"):
+	if file.file_exists("user://saves/"+name+".scn"):
 		var dir = Directory.new()
-		dir.remove("res://Map_Menu/Maps/"+name+".tscn")
+		dir.remove("user://saves/"+name+".scn")
 		var temp = find_node_by_name(get_tree().get_root(), "Load_"+name)
 		$ScrollContainer/HBoxContainer/LoadContainer.remove_child(temp)
 		temp = find_node_by_name(get_tree().get_root(), "Edit_"+name)

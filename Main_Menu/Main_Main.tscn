@@ -6,7 +6,7 @@
 script = ExtResource( 1 )
 
 [node name="ButtonGen" type="Button" parent="."]
-margin_left = 365.0
+margin_left = 400.0
 margin_top = 218.0
 margin_right = 616.0
 margin_bottom = 256.0
@@ -17,7 +17,7 @@ __meta__ = {
 }
 
 [node name="ButtonSim" type="Button" parent="."]
-margin_left = 365.0
+margin_left = 400.0
 margin_top = 285.0
 margin_right = 616.0
 margin_bottom = 323.0

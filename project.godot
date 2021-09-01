@@ -20,7 +20,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Procgen & VTT"
+config/name="Dungen"
 run/main_scene="res://Main_Menu/Main_Main.tscn"
 boot_splash/image="res://darkest-godot.png"
 boot_splash/fullsize=false

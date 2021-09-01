@@ -118,4 +118,26 @@ text = "Back"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="CheckButton" type="CheckButton" parent="Camera2D/CanvasLayer"]
+margin_left = 944.0
+margin_top = 24.0
+margin_right = 1020.0
+margin_bottom = 64.0
+pressed = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Camera2D/CanvasLayer"]
+margin_left = 912.0
+margin_top = 8.0
+margin_right = 1017.0
+margin_bottom = 32.0
+text = "Follow Character"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="Camera2D/CanvasLayer/ButtonBack" to="." method="_on_ButtonBack_pressed"]
+[connection signal="toggled" from="Camera2D/CanvasLayer/CheckButton" to="Camera2D" method="_on_CheckButton_toggled"]

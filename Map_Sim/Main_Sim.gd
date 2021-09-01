@@ -14,7 +14,7 @@ func _init():
 
 func _ready():
 	print(Global.loading)
-	var map = load("res://Map_Menu/Maps/"+Global.loading+".tscn").instance()
+	var map = load("user://saves/"+Global.loading+".scn").instance()
 	$T.add_child(map)
 	map.name = "Terrain"
 	
@@ -42,6 +42,10 @@ func _ready():
 	var cells = $T/Terrain.get_used_cells()
 	for cell in cells:
 		$Visibility.set_cellv(cell, 0)
+		
+	var rec = $T/Terrain.get_used_rect()
+	$Camera2D.mapW = rec.size.x
+	$Camera2D.mapH = rec.size.y
 
 func _input(event):
 	if Input.is_action_pressed("ui_left"):
@@ -69,6 +73,7 @@ func _process(delta):
 		remove_fog(player)
 		scan_for_monsters()
 	pass
+	print(Performance.get_monitor(Performance.TIME_FPS))
 
 func prev_turn():
 	turn = turn - 1
@@ -152,7 +157,7 @@ func remove_fog(player):
 		var result = space_state.intersect_ray(player.position, $Visibility.map_to_world(point), [Shape2D])
 		
 		if result:
-			var pos = $Visibility.world_to_map(result.position - result.normal)
+			var pos = $Visibility.world_to_map(result.position - result.normal - Vector2(1,1))
 			var length = (pos - player.cell).length()
 			
 			if length < view_range:

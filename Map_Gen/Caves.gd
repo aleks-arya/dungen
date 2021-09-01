@@ -36,6 +36,7 @@ func generate():
 	dig_caves()
 	get_caves()
 	connect_caves()
+	update_bitmask_region()
 
 
 # start by filling the map with roof tiles

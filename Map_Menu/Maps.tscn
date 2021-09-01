@@ -15,6 +15,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Label" type="Label" parent="."]
+margin_left = 440.0
+margin_top = 96.0
+margin_right = 564.0
+margin_bottom = 110.0
+text = "No Maps Yet!"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 margin_left = 215.0
 margin_top = 80.0
